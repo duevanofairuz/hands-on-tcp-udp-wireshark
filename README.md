@@ -1,6 +1,6 @@
 # hands-on-tcp-udp-wireshark
-Kelas Jarkom - D
-Duevano Fairuz Pandya (5025211052)
+* Kelas Jarkom - D
+* Duevano Fairuz Pandya (5025211052)
 
 # TCP
 # No. 1
@@ -45,7 +45,9 @@ SACK Permitted
 What is the sequence number of the SYNACK segment sent by gaia.cs.umass.edu to the client computer in reply to the SYN? What is it in the segment that identifies the segment as a SYNACK segment? What is the value of theAcknowledgement field in the SYNACK segment? How did gaia.cs.umass.edu determine that value?
 
 ### Penyelesaian
-Sequence number is 1068969752, Flag 0x012 identifies the segment as SYNACK, Acknowledgement number is 4236649188, Acknowledgement number is determined as the next value after the sequence number of the SYN segment (4236649187).
+![image](https://github.com/duevanofairuz/hands-on-tcp-udp-wireshark/assets/114162555/28c61c8a-4fd7-4dc5-a141-bd5dfcc26797)
+
+Sequence Number: 0    (relative sequence number) & Sequence Number (raw): 1068969752, Flag 0x012 menandakan segmen SYNACK, Acknowledgment number (raw): 4236649188, Acknowledgement number didapatkan dari sequence number dari SYN segment ditambah 1 (ACK=Seq no+1).
 
 ----------------------------------------------------------------------------------------------------------------------------------
 # No. 5
@@ -53,13 +55,30 @@ Sequence number is 1068969752, Flag 0x012 identifies the segment as SYNACK, Ackn
 What is the sequence number of the TCP segment containing the header of the HTTP POST command? How many bytes of data are contained in the payload (data) field of this TCP segment? Did all of the data in the transferred file alice.txt fit into this single segment?
 
 ### Penyelesaian
+![image](https://github.com/duevanofairuz/hands-on-tcp-udp-wireshark/assets/114162555/0bd56a58-49ef-41a6-91ce-717161d2d59a)
+Sequence Number: 152041  (relative sequence number) & Sequence Number (raw): 4236801228, TCP payload (1385 bytes), No
 
 ----------------------------------------------------------------------------------------------------------------------------------
 # No. 6
 ### Soal
 Consider the TCP segment containing the HTTP “POST” as the first segment in the data transfer part of the TCP connection.
+![image](https://github.com/duevanofairuz/hands-on-tcp-udp-wireshark/assets/114162555/547ecbb3-f825-4948-8f6a-58f08f506df9)
+
 
 ### Penyelesaian
+* At what time was the firstsegment(the onecontaining the HTTP POST) in the data-transfer part of the TCP connection sent?
+[Time since reference or first frame: 0.024047000 seconds]
+
+* At what timewas the ACK for this firstdata-containing segment received?
+ACK frame 4 diterima diterima di frame 7 dengan clock time: [Time since reference or first frame: 0.052671000 seconds]
+
+* What is the RTT for this first data-containing segment?
+ada di frame 5 bagian SEQ/ACK analysis
+[The RTT to ACK the segment was: 0.028624000 seconds]
+
+* What is the RTT value the seconddata-carrying TCP segment and its ACK?
+segement kedua yang dikirimkan ada di frame 5 lalu diterima di frame 8
+[The RTT to ACK the segment was: 0.028628000 seconds]
 
 ----------------------------------------------------------------------------------------------------------------------------------
 # No. 7
@@ -67,6 +86,13 @@ Consider the TCP segment containing the HTTP “POST” as the first segment in 
 What is the length (header plus payload) of each of the first four data-carrying TCP segments?
 
 ### Penyelesaian
+![image](https://github.com/duevanofairuz/hands-on-tcp-udp-wireshark/assets/114162555/b6543a94-cdb8-44f8-99ce-b44613eb8e1a)
+
+frame: 4 : length = 32 + 1448 = 1480 bytes
+frame: 5 : length = 32 + 1448 = 1480 bytes
+frame: 6 : length = 32 + 1448 = 1480 bytes
+frame: 9 : length = 32 + 1448 = 1480 bytes
+Sehingga total length dari 4 segment pertama adalah 1480 * 4 = 5920 bytes
 
 ----------------------------------------------------------------------------------------------------------------------------------
 # No. 8
