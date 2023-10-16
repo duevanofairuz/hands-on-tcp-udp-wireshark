@@ -88,10 +88,10 @@ What is the length (header plus payload) of each of the first four data-carrying
 ### Penyelesaian
 ![image](https://github.com/duevanofairuz/hands-on-tcp-udp-wireshark/assets/114162555/b6543a94-cdb8-44f8-99ce-b44613eb8e1a)
 
-frame: 4 : length = 32 + 1448 = 1480 bytes
-frame: 5 : length = 32 + 1448 = 1480 bytes
-frame: 6 : length = 32 + 1448 = 1480 bytes
-frame: 9 : length = 32 + 1448 = 1480 bytes
+- frame: 4 : length = 32 + 1448 = 1480 bytes
+- frame: 5 : length = 32 + 1448 = 1480 bytes
+- frame: 6 : length = 32 + 1448 = 1480 bytes
+- frame: 9 : length = 32 + 1448 = 1480 bytes
 Sehingga total length dari 4 segment pertama adalah 1480 * 4 = 5920 bytes
 
 ----------------------------------------------------------------------------------------------------------------------------------
@@ -139,11 +139,16 @@ These “fleets” of segments appear to have some periodicity. What can you say
 ----------------------------------------------------------------------------------------------------------------------------------
 
 # UDP
+![image](https://github.com/duevanofairuz/hands-on-tcp-udp-wireshark/assets/114162555/32ef2cf1-d20b-4c42-a505-c3a78fda6825)
+
 # No. 1
 ### Soal
-Select the first UDP segment in your trace. What is the packet number of this segment in the trace file?
+* Select the first UDP segment in your trace. What is the packet number of this segment in the trace file?
+* What type of application-layer payload or protocol message is being carried in this UDP segment?
+* Look at the details of this packet in Wireshark. How many fields there are in the UDP header? Look at the details of this packet in Wireshark. How many fields there are in the UDP header?
 
 ### Penyelesaian
+Paket 5, SSDP, 4 Field (source port, destination port, length, checksum)
 
 ----------------------------------------------------------------------------------------------------------------------------------
 # No. 2
@@ -151,6 +156,7 @@ Select the first UDP segment in your trace. What is the packet number of this se
 By consulting the displayed information in Wireshark’s packet content field for this packet (or by consulting the textbook), what is the length (in bytes) of each of the UDP header fields?
 
 ### Penyelesaian
+Masing-masing field adalah 16 bit atau 2 byte, karena ada 4 field maka length masing-masing header dari UDP adalah `8 byte`
 
 ----------------------------------------------------------------------------------------------------------------------------------
 # No. 3
@@ -158,6 +164,7 @@ By consulting the displayed information in Wireshark’s packet content field fo
 The value in the Length field is the length of what?
 
 ### Penyelesaian
+Length dari paket UDP: payload 275 byte, header 8 byte
 
 ----------------------------------------------------------------------------------------------------------------------------------
 # No. 4
@@ -165,6 +172,7 @@ The value in the Length field is the length of what?
 What is the maximum number of bytes that can be included in a UDP payload?
 
 ### Penyelesaian
+Karena length adalah 16 bait field, maximum value nya adalah 65.535, dan headernya 8 byte, maka maximum payload nya adalah 65.527 byte
 
 ----------------------------------------------------------------------------------------------------------------------------------
 # No. 5
@@ -172,6 +180,7 @@ What is the maximum number of bytes that can be included in a UDP payload?
 What is the largest possible source port number?
 
 ### Penyelesaian
+65.535
 
 ----------------------------------------------------------------------------------------------------------------------------------
 # No. 6
@@ -179,12 +188,19 @@ What is the largest possible source port number?
 What is the protocol number for UDP?
 
 ### Penyelesaian
+![image](https://github.com/duevanofairuz/hands-on-tcp-udp-wireshark/assets/114162555/c9a87d06-679f-4a04-a65b-663135fb9c93)
+
+Protocol: UDP (17)
 
 ----------------------------------------------------------------------------------------------------------------------------------
 # No. 7
 ### Soal
 Examine the pair of UDP packets in which your host sends the first UDP packet and the second UDP packet is a reply to this first UDP packet.
+* What is the packet number of the first of these two UDP segments in the trace file?
+* What is the packet number of the second of these two UDP segments in the trace file?
+* Describe the relationship between the port numbers in the two packets.
 
 ### Penyelesaian
+Paket 15, Paket 17, source port dari paket 15 (request) adalah destinasi port untuk paket 17 (reply) dan sebaliknya
 
 ----------------------------------------------------------------------------------------------------------------------------------
